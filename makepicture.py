@@ -7,17 +7,17 @@ class Text():
     def __init__(self, file, definition):
         self.image = Image.open(file)
         self.image = self.image.resize((500,300))
-        self.idraw = ImageDraw.Draw(self.image)
+        self.draw = ImageDraw.Draw(self.image)
         self.definition = definition
 
     def __make_text(self,x,y,text,size,fill,font = "fonts/arial.ttf"):
         text = text
         font = ImageFont.truetype(font, size=size)
-        self.idraw.multiline_text((x,y), text, font=font, fill = fill)
+        self.draw.multiline_text((x,y), text, font=font, fill = fill)
 
     def set_heading(self):
         '''Write heading'''
-        self.__make_text(30, 20, self.definition['word'], 45, fill='black', font = 'fonts/Bangers-Regular.ttf')
+        self.__make_text(30, 20, self.definition['word'].title(), 45, fill='black', font = 'fonts/Roboto.ttf')
 
     def set_definition(self):
         '''Write definition'''
