@@ -2,14 +2,14 @@ from PIL import Image, ImageDraw, ImageFont
 from textwrap import wrap
 from getdefinition import get_random_word, search
 
-image = Image.open('themes/gradient2.jpg')
-image = image.resize((500,500))
-draw = ImageDraw.Draw(image)
-font = ImageFont.truetype('fonts/Roboto.ttf', size=25)
+# image = Image.open('themes/gradient2.jpg')
+# image = image.resize((500,500))
+# draw = ImageDraw.Draw(image)
+# font = ImageFont.truetype('fonts/Roboto.ttf', size=25)
 
-line_height = font.getsize('hg')[1]
+# line_height = font.getsize('hg')[1]
 
-print(search(get_random_word()))
+# print(search(get_random_word()))
 
 def text_wrap(text, font, width = 450):
     lines = []
@@ -44,4 +44,4 @@ def main():
 
     image.show()
 
-main()
+# main()
