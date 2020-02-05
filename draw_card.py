@@ -191,7 +191,6 @@ def test_draw_card():
     image.get_content()
     image.draw_card()
     image.show()
-    image.save()
 
 if __name__ == '__main__':
     test_draw_card()
