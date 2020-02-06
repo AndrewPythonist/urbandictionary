@@ -11,8 +11,8 @@ from bs4 import BeautifulSoup
 from random import choice
 
 # urls for api's method
-define_url = 'http://api.urbandictionary.com/v0/define'
-random_url = 'http://api.urbandictionary.com/v0/random'
+DEFINE_URL = 'http://api.urbandictionary.com/v0/define'
+RANDOM_URL = 'http://api.urbandictionary.com/v0/random'
 
 
 def get_content(word=None, definition=1):
@@ -24,7 +24,7 @@ def get_content(word=None, definition=1):
     if word is None:
         raise Exception("Необходимо указать слово для получения контента.")
 
-    content_list = requests.get(define_url, params={'term': word}).json()['list']
+    content_list = requests.get(DEFINE_URL, params={'term': word}).json()['list']
 
     if not content_list:
         raise Exception('Для этого слова нет определений.')
@@ -57,7 +57,7 @@ def get_random_word():
         names = file.read()
         while True:
             try:
-                word = choice(requests.get(random_url).json()['list'])['word']
+                word = choice(requests.get(RANDOM_URL).json()['list'])['word']
             except Exception:
                 get_random_word()
 
