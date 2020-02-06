@@ -1,6 +1,6 @@
-from get_content import get_random_word, get_content
-from wall_posting import posting
-from draw_card import save_card
+from lib.get_content import get_random_word, get_content
+from lib.wall_posting import posting
+from lib.draw_card import save_card
 from vk_info import token, group_id, album_id
 from time import sleep
 from random import randint

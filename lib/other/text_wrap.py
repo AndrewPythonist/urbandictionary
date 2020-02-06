@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-from get_content import get_random_word, get_content
+from lib.get_content import get_random_word, get_content
 
 def text_wrap(text, font, width = 450):
 

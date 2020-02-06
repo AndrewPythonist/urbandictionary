@@ -121,7 +121,7 @@ def test():
     from pprint import pprint
 
     post = VkPosting(token)
-    post.upload_photo('cards/deez nuts.png', group_id = 191098332, album_id = 269851757)
+    post.upload_photo('../data/cards/deez nuts.png', group_id = 191098332, album_id = 269851757)
     post.posting()
 
 

@@ -1,8 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
-from get_content import get_content
-from text_wrap import text_wrap
+from lib.get_content import get_content
+from lib.other.text_wrap import text_wrap
 from datetime import datetime
-
 
 class DrawCard():
 
@@ -48,7 +47,7 @@ class DrawCard():
         '''Функция для просмотра изображения'''
         self.image.show()
 
-    def save(self, filepath='cards/', filename=None):
+    def save(self, filepath='data/cards/', filename=None):
         '''Метод для сохранения изображения,
         filename - папка для сохранения, по умолчанию cards/
         filename - название для изображения, по умолчанию слово из контента.
