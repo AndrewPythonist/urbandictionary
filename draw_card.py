@@ -15,12 +15,12 @@ class DrawCard():
 
     def __set_fonts(self):
         '''Передает в переменные шрифты формата ImageFont.'''
-        self.__rect_font = ImageFont.truetype('fonts/SourceSansPro-Semibold.otf', size=13*2)
-        self.__word_font = ImageFont.truetype('fonts/Lora-Bold.ttf', size=32*2)
-        self.__cat_font = ImageFont.truetype('fonts/SourceSansPro-Regular.otf', size=16*2)
-        self.__def_font = ImageFont.truetype('fonts/SourceSansPro-Regular.otf', size=16*2)
-        self.__ex_font = ImageFont.truetype('fonts/SourceSansPro-It.otf', size=16*2)
-        self.__aut_font = ImageFont.truetype('fonts/SourceSansPro-Semibold.otf', size=16*2)
+        self.__rect_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=13*2)
+        self.__word_font = ImageFont.truetype('data/template/fonts/Lora-Bold.ttf', size=32*2)
+        self.__cat_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
+        self.__def_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
+        self.__ex_font = ImageFont.truetype('data/template/fonts/SourceSansPro-It.otf', size=16*2)
+        self.__aut_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=16*2)
 
     def __set_size(self):
         '''Функция вычисляет размер изображения, исходя из контента и шрифтов,
@@ -77,15 +77,15 @@ class DrawCard():
 
         def social_icons():
 
-            twitter = Image.open('logos/twitter.png')
+            twitter = Image.open('data/template/logos/twitter.png')
             twitter = twitter.resize((16*2,16*2))
             self.image.paste(twitter, (self.width-32*2-16*2-15*2-16*2-15*2-16*2,32*2), mask=twitter)
 
-            facebook = Image.open('logos/facebook.png')
+            facebook = Image.open('data/template/logos/facebook.png')
             facebook = facebook.resize((16*2,16*2))
             self.image.paste(facebook, (self.width-32*2-16*2-15*2-16*2,32*2), mask=facebook)
 
-            links = Image.open('logos/link.png')
+            links = Image.open('data/template/logos/link.png')
             links = links.resize((16*2,16*2))
             self.image.paste(links, (self.width-32*2-16*2,32*2), mask=links)
         
@@ -100,21 +100,21 @@ class DrawCard():
                 self.draw.text((self.width-32*2-6*2-width,55*2-2*2), text = self.content['category'], font = self.__cat_font, fill='#FFFFFF')
 
         def thumbs():
-            border = Image.open('logos/border.png').convert("RGBA")
+            border = Image.open('data/template/logos/border.png').convert("RGBA")
             border = border.resize((144*2,40*2))
             self.image.paste(border, (32*2,self.height-40*2-5*2), mask = border)
 
-            font = ImageFont.truetype('fonts/SourceSansPro-Semibold.otf', size=12*2)
+            font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=12*2) # убрать шрифт наверх
             self.draw.text((32*2+16*2+16*2+8*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_up']), font= font)
             self.draw.text((32*2+75*2+8*2+16*2+6.5*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_down']), font= font)
 
         def text_right():
 
-            flag = Image.open('logos/flag.png').convert("RGBA")
+            flag = Image.open('data/template/logos/flag.png').convert("RGBA")
             flag = flag.resize((40*2,40*2))
             self.image.paste(flag,(self.width-32*2-40*2-40*2,self.height-40*2-5*2), mask = flag)
 
-            dots = Image.open('logos/dots.png').convert("RGBA")
+            dots = Image.open('data/template/logos/dots.png').convert("RGBA")
             dots = dots.resize((40*2,40*2))
             self.image.paste(dots,(self.width-32*2-40*2,self.height-40*2-5*2), mask = dots)
 
@@ -165,7 +165,7 @@ class DrawCard():
         self.__draw_template()
         self.__draw_text()
 
-def save_card(word, image, filepath='cards/', filename=None):
+def save_card(word, image, filepath='data/cards/', filename=None):
     '''Функция для генерации и сохранения изображения
     Возвращает filepath+filename
     
@@ -187,7 +187,7 @@ def test_draw_card():
     from pprint import pprint
     from random import randint
 
-    image = DrawCard(word = get_random_word(), image = f'themes/gradient ({randint(1,10)}).jpg')
+    image = DrawCard(word = get_random_word(), image = f'data/template/themes/gradient ({randint(1,10)}).jpg')
     image.get_content()
     image.draw_card()
     image.show()

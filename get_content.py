@@ -53,7 +53,7 @@ def get_random_word():
 
     # IDEA: добавить сортировку слов по популярности
 
-    with open('datasets/allnames.txt') as file:
+    with open('data/datasets/allnames.txt') as file:
         names = file.read()
         while True:
             try:
