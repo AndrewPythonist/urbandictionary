@@ -1,6 +1,6 @@
 # URBANDICTIONARY
 
-Программа для автопостинга в [группу вконтакте](https://vk.com/urbandictionary) английского сленга с сайта [urabandictionary](https://urbandictionary.com). Проект написан на python v3.8, использованы библиотеки: pillow, bs4, requests. Проект взаимодейтвует с api 2-ух сайтов: [vk.com] и [urbandictionary.com].
+Программа для автопостинга в [группу вконтакте](https://vk.com/urbandictionary) английского сленга с сайта [urabandictionary](https://urbandictionary.com). Проект написан на python v3.8, использованы библиотеки: pillow, bs4, requests. Проект взаимодейтвует с api 2-ух сайтов: [https://vk.com] и [https://urbandictionary.com].
 
 
 # Терминология проекта
@@ -56,6 +56,7 @@ _Пример:_
   + get_content.py - программа для нахождения контента.
   + wall_posting.py - программа для постинга в группу вк
 + main.py - запускающая программа, которая связывает все 3 основные программы из папки lib.
++ config - здесь храним токен, id группы и id альбома.
 + .gitignore
 + .README.md
 
