@@ -13,7 +13,7 @@ def main(timespan):
 
         path = save_card(
             word=word,
-            image=f'data/template/themes/gradient ({randint(1,9)}).jpg'
+            image=f'data/template/backgroundimages/bgimg ({randint(1,9)}).jpg'
             )
 
         posting(

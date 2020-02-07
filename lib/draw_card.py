@@ -76,15 +76,15 @@ class DrawCard():
 
         def social_icons():
 
-            twitter = Image.open('data/template/logos/twitter.png')
+            twitter = Image.open('data/template/icons/twitter.png')
             twitter = twitter.resize((16*2,16*2))
             self.image.paste(twitter, (self.width-32*2-16*2-15*2-16*2-15*2-16*2,32*2), mask=twitter)
 
-            facebook = Image.open('data/template/logos/facebook.png')
+            facebook = Image.open('data/template/icons/facebook.png')
             facebook = facebook.resize((16*2,16*2))
             self.image.paste(facebook, (self.width-32*2-16*2-15*2-16*2,32*2), mask=facebook)
 
-            links = Image.open('data/template/logos/link.png')
+            links = Image.open('data/template/icons/link.png')
             links = links.resize((16*2,16*2))
             self.image.paste(links, (self.width-32*2-16*2,32*2), mask=links)
         
@@ -99,7 +99,7 @@ class DrawCard():
                 self.draw.text((self.width-32*2-6*2-width,55*2-2*2), text = self.content['category'], font = self.__cat_font, fill='#FFFFFF')
 
         def thumbs():
-            border = Image.open('data/template/logos/border.png').convert("RGBA")
+            border = Image.open('data/template/icons/border.png').convert("RGBA")
             border = border.resize((144*2,40*2))
             self.image.paste(border, (32*2,self.height-40*2-5*2), mask = border)
 
@@ -109,11 +109,11 @@ class DrawCard():
 
         def text_right():
 
-            flag = Image.open('data/template/logos/flag.png').convert("RGBA")
+            flag = Image.open('data/template/icons/flag.png').convert("RGBA")
             flag = flag.resize((40*2,40*2))
             self.image.paste(flag,(self.width-32*2-40*2-40*2,self.height-40*2-5*2), mask = flag)
 
-            dots = Image.open('data/template/logos/dots.png').convert("RGBA")
+            dots = Image.open('data/template/icons/dots.png').convert("RGBA")
             dots = dots.resize((40*2,40*2))
             self.image.paste(dots,(self.width-32*2-40*2,self.height-40*2-5*2), mask = dots)
 
@@ -186,7 +186,7 @@ def test_draw_card():
     from pprint import pprint
     from random import randint
 
-    image = DrawCard(word = get_random_word(), image = f'data/template/themes/gradient ({randint(1,10)}).jpg')
+    image = DrawCard(word = get_random_word(), image = f'data/template/backgroundimages/bgimg ({randint(1,9)}).jpg')
     image.get_content()
     image.draw_card()
     image.show()
