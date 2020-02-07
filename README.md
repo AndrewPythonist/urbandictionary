@@ -1,11 +1,11 @@
-# urbandictionary
+# URBANDICTIONARY
 
-Программа для постинга в [группу вконтакте](https://vk.com/urbandictionary) через определенный промежуток времени. Постим  карточки со сленговыми словами из сайта [urabandictionary](https://urbandictionary.com). Проект написан на python v3.8, использованы библиотеки: pillow, bs4, requests. Проект взаимодейтвует с api 2-ух сайтов: [vk.com] и [urbandictionary.com].
+Программа для автопостинга в [группу вконтакте](https://vk.com/urbandictionary) английского сленга с сайта [urabandictionary](https://urbandictionary.com). Проект написан на python v3.8, использованы библиотеки: pillow, bs4, requests. Проект взаимодейтвует с api 2-ух сайтов: [vk.com] и [urbandictionary.com].
 
 
 # Терминология проекта
 
-**content** - контент - словарь с информацие о слове.
+**content** - контент - словарь с основной информацией о слове. Присутствуют поля word, definition, example, category и другие..
 
 _Пример:_
 ```python
@@ -32,10 +32,12 @@ print(content)
  'written_on': '2003-03-25T00:00:00.000Z'}
 ```
 
-**card** - карточка - сверстанное из контента и шаблона изображение.
+**card** - карточка - сверстанное из контента и шаблона(шаблон делается в draw_card.py) изображение.
 
 _Пример:_
 ![weed.png](https://github.com/AndrewPythonist/urbandictionary/raw/master/data/cards/weed.png)
+
+
 # Структура проекта
 
 + data
