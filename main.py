@@ -5,7 +5,7 @@ from time import sleep
 from random import randint
 
 # Введите здесь название вашего конфиг-файла, где будут храниться token, group_id, album_id.
-CONFIG = vk_info 
+CONFIG = 'vk_info'
 
 exec(f'from {CONFIG} import token, group_id, album_id')
 
