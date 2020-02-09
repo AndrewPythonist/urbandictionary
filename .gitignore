@@ -1,7 +1,6 @@
-# игнорирование информации с токеном и ид группы и альбома
-/vk_info.py
-
+vk_info.py
 __pycache__
-
+venv
+.idea
 data/cards/*
 !data/cards/weed.png
