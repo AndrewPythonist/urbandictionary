@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
-from lib.get_content import get_content
-from lib.other.text_wrap import text_wrap
+from src.get_content import get_content
+from src.other.text_wrap import text_wrap
 from datetime import datetime
 
 class DrawCard():

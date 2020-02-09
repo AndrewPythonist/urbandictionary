@@ -1,6 +1,6 @@
-from lib.get_content import get_random_word, get_content
-from lib.wall_posting import posting
-from lib.draw_card import save_card
+from src.get_content import get_random_word, get_content
+from src.wall_posting import posting
+from src.draw_card import save_card
 from time import sleep
 from random import randint
 
