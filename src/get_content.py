@@ -47,24 +47,7 @@ def get_content(word=None, definition=1):
 
 
 def get_random_word():
-    '''Функция, которая возвращает рандомное слово с сайта urbandictionary,
-    исключает имена людей.
-    '''
-
-    # IDEA: добавить сортировку слов по популярности
-
-    with open('data/datasets/allnames.txt') as file:
-        names = file.read()
-        while True:
-            try:
-                word = choice(requests.get(RANDOM_URL).json()['list'])['word']
-            except Exception:
-                get_random_word()
-
-            if f'\n{word.lower()}\n' in names:
-                continue
-            else:
-                return word
+    return choice(requests.get(RANDOM_URL).json()['list'])['word']
 
 
 def test_get_content():
