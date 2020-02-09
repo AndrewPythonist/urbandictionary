@@ -2,7 +2,7 @@ import threading
 import time
 
 from src.draw_card import save_card
-from src.get_content import get_random_word, get_content
+from src.unbandictionary_api import get_random_word, get_content
 from src.services.baseService import BaseService
 from src.singleton.the import The
 from src.wall_posting import posting
