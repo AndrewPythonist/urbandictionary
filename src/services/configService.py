@@ -12,7 +12,8 @@ class ConfigService(BaseService):
         self.data = {
             "token": ConfigData(str, ""),
             "group_id": ConfigData(str, ""),
-            "album_id": ConfigData(str, "")
+            "album_id": ConfigData(str, ""),
+            "time_span": ConfigData(int, 60)
         }
 
     def start(self):
