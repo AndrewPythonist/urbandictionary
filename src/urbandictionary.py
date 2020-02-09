@@ -1,3 +1,5 @@
+import time
+
 from src.common.logger import get_logger
 from src.singleton.the import The
 
@@ -9,5 +11,14 @@ class UrbanDictionary:
         logger.warning("starting UrbanDictionary")
         self.the = The()
         self.the.start_services()
+        self.main_loop()
 
-        pass
+    @staticmethod
+    def main_loop():
+        """
+        loop for every 1 second
+        """
+        logger.info("main_loop init")
+
+        while True:
+            time.sleep(1)
