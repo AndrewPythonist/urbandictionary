@@ -20,6 +20,11 @@ class CardPlacerService(BaseService):
     def place_loop():
         the = The()
 
+        token = the.config_service.data["token"].value
+        group_id = the.config_service.data["group_id"].value
+        album_id = the.config_service.data["album_id"].value
+        sleep_for = the.config_service.data["time_span"].value
+
         while True:
             word = get_random_word()
             content = get_content(word)
@@ -28,11 +33,6 @@ class CardPlacerService(BaseService):
                 word=word,
                 image=f'data/template/backgroundimages/bgimg ({random.randint(1, 9)}).jpg'
             )
-
-            token = the.config_service.data["token"].value
-            group_id = the.config_service.data["group_id"].value
-            album_id = the.config_service.data["album_id"].value
-            sleep_for = the.config_service.data["time_span"].value
 
             posting(
                 token=token,
