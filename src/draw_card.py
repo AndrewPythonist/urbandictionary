@@ -1,12 +1,12 @@
 from PIL import Image, ImageDraw, ImageFont
-from src.unbandictionary_api import get_content
+from src.unbandictionary_api import get_word_data
 from src.other.text_wrap import text_wrap
 from datetime import datetime
 
 
 class DrawCard:
     def __init__(self, word, image):
-        self.content = get_content(word)
+        self.content = get_word_data(word)
         self.image = Image.open(image)
         self.__set_fonts()
         self.__set_size()

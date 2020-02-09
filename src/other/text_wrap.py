@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-from src.unbandictionary_api import get_random_word, get_content
+from src.unbandictionary_api import get_random_word, get_word_data
 
 def text_wrap(text, font, width = 450):
 

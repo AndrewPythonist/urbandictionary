@@ -1,10 +1,11 @@
-'''Модуль содержит функции взаимодействия с api сайта urbandictionary.com
+"""
+Модуль содержит функции взаимодействия с api сайта urbandictionary.com
 (присутствуют элементы парсинга)
 
 Доступные функции:
 get_content
 get_random_word
-'''
+"""
 
 import requests
 from bs4 import BeautifulSoup
@@ -15,7 +16,7 @@ DEFINE_URL = 'http://api.urbandictionary.com/v0/define'
 RANDOM_URL = 'http://api.urbandictionary.com/v0/random'
 
 
-def get_content(word: str, definition=1):
+def get_word_data(word: str, definition: int = 1) -> dict:
     """
     Функция возвращает словарь content c информацией о слове, параметры:
     word - слово которое нужно найти;
@@ -27,7 +28,7 @@ def get_content(word: str, definition=1):
     if not content_list:
         raise Exception('Для этого слова нет определений.')
 
-    content = content_list[definition-1]
+    content = content_list[definition - 1]
 
     # Добавляем ключ и значение категории в content,
     # если ее нет, категория - пустая строка.
@@ -43,7 +44,7 @@ def get_content(word: str, definition=1):
     return content
 
 
-def get_random_word():
+def get_random_word() -> str:
     return choice(requests.get(RANDOM_URL).json()['list'])['word']
 
 
@@ -51,7 +52,7 @@ def test_get_content():
     from pprint import pprint
     print = pprint
 
-    print(get_content(get_random_word()))
+    print(get_word_data(get_random_word()))
 
 
 if __name__ == '__main__':

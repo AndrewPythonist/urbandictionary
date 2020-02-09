@@ -30,7 +30,7 @@ class CardPlacerService(BaseService):
             while word in names_data_set:
                 word = unbandictionary_api.get_random_word()
 
-            content = unbandictionary_api.get_content(word)
+            word_data = unbandictionary_api.get_word_data(word)
 
             path = save_card(
                 word=word,
@@ -42,7 +42,7 @@ class CardPlacerService(BaseService):
                 imagepath=path,
                 group_id=group_id,
                 album_id=album_id,
-                message=f"#{content['category']}@urbandictionary" if content['category'] else ''
+                message=f"#{word_data['category']}@urbandictionary" if word_data['category'] else ''
             )
 
             time.sleep(sleep_for)

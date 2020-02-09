@@ -26,4 +26,4 @@ class The(Singleton):
     def start_services(self):
         self.config_service.start()
         self.data_set_service.start()
-        # self.card_placer_service.start()
+        self.card_placer_service.start()
