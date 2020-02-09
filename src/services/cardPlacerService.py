@@ -1,8 +1,8 @@
 import threading
 import time
 
+from src import unbandictionary_api
 from src.draw_card import save_card
-from src.unbandictionary_api import get_random_word, get_content
 from src.services.baseService import BaseService
 from src.singleton.the import The
 from src.wall_posting import posting
@@ -24,10 +24,13 @@ class CardPlacerService(BaseService):
         group_id = the.config_service.data["group_id"].value
         album_id = the.config_service.data["album_id"].value
         sleep_for = the.config_service.data["time_span"].value
-
+        names_data_set = the.data_set_service.name_data_set.data
         while True:
-            word = get_random_word()
-            content = get_content(word)
+            word = unbandictionary_api.get_random_word()
+            while word in names_data_set:
+                word = unbandictionary_api.get_random_word()
+
+            content = unbandictionary_api.get_content(word)
 
             path = save_card(
                 word=word,
