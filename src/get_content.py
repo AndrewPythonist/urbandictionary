@@ -15,14 +15,12 @@ DEFINE_URL = 'http://api.urbandictionary.com/v0/define'
 RANDOM_URL = 'http://api.urbandictionary.com/v0/random'
 
 
-def get_content(word=None, definition=1):
-    '''Функция возвращает словарь content c информацией о слове, параметры:
+def get_content(word: str, definition=1):
+    """
+    Функция возвращает словарь content c информацией о слове, параметры:
     word - слово которое нужно найти;
     definition - номер определения, по умолчанию 1-ое.
-    '''
-
-    if word is None:
-        raise Exception("Необходимо указать слово для получения контента.")
+    """
 
     content_list = requests.get(DEFINE_URL, params={'term': word}).json()['list']
 
@@ -30,7 +28,6 @@ def get_content(word=None, definition=1):
         raise Exception('Для этого слова нет определений.')
 
     content = content_list[definition-1]
-
 
     # Добавляем ключ и значение категории в content,
     # если ее нет, категория - пустая строка.
