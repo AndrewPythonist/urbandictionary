@@ -15,11 +15,7 @@ class The(Singleton):
         """
         if not self.__was_initialized:
             self.__was_initialized = True
-
-            self.services = {
-                "config_service": ConfigService()
-            }
+            self.config_service = ConfigService()
 
     def start_services(self):
-        for service in self.services:
-            self.services[service].start()
+        self.config_service.start()
