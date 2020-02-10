@@ -14,21 +14,21 @@ class DrawCard:
 
     def __set_fonts(self):
         '''Передает в переменные шрифты формата ImageFont.'''
-        self.__rect_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=13*2)
-        self.__word_font = ImageFont.truetype('data/template/fonts/Lora-Bold.ttf', size=32*2)
-        self.__cat_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
-        self.__def_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
-        self.__ex_font = ImageFont.truetype('data/template/fonts/SourceSansPro-It.otf', size=16*2)
-        self.__aut_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=16*2)
+        self.rect_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=13*2)
+        self.word_font = ImageFont.truetype('data/template/fonts/Lora-Bold.ttf', size=32*2)
+        self.cat_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
+        self.def_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
+        self.ex_font = ImageFont.truetype('data/template/fonts/SourceSansPro-It.otf', size=16*2)
+        self.aut_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=16*2)
 
     def __set_size(self):
         '''Функция вычисляет размер изображения, исходя из контента и шрифтов,
         изменяет размер изображения, и передает ширину и высоту в переменные.
         '''
-        self.__def_lines = text_wrap(self.content['definition'],self.__def_font, 556*2)
-        self.__ex_lines = text_wrap(self.content['example'],self.__ex_font, 556*2)
+        self.def_lines = text_wrap(self.content['definition'],self.def_font, 556*2)
+        self.ex_lines = text_wrap(self.content['example'],self.ex_font, 556*2)
         width = 620*2
-        height = 32*2 + 30*2 + 40*2 + 16*2 + len(self.__def_lines)*20*2 + 20*2 + len(self.__ex_lines)*16*2 + 16*2 + 20*2 + 40*2
+        height = 32*2 + 30*2 + 40*2 + 16*2 + len(self.def_lines)*20*2 + 20*2 + len(self.ex_lines)*16*2 + 16*2 + 20*2 + 40*2
         self.image = self.image.resize((width, height))
 
         self.width = self.image.size[0]
@@ -72,7 +72,7 @@ class DrawCard:
 
         def yellow_rectangle():
             self.draw.rectangle((32*2, 32*2, 32*2+90*2, 32*2+16*2), fill=(239,255,0))
-            self.draw.text((32*2,33*2), font = self.__rect_font, text = 'TOP DEFINITION', fill='#333333')
+            self.draw.text((32*2,33*2), font = self.rect_font, text = 'TOP DEFINITION', fill='#333333')
 
         def social_icons():
 
@@ -94,9 +94,9 @@ class DrawCard:
             else:
                 colors = {'college':'#00ffbb', 'drugs':'#00ff2f', 'food':'#eaff00', 'music':'#ff008c', 'sex':'red'}
 
-                width, height = self.__cat_font.getsize(self.content['category'])
+                width, height = self.cat_font.getsize(self.content['category'])
                 self.draw.rectangle((self.width-32*2-6*2-width-6*2,55*2 ,self.width-32*2 , 55*2+height), fill=colors[self.content['category']])                
-                self.draw.text((self.width-32*2-6*2-width,55*2-2*2), text = self.content['category'], font = self.__cat_font, fill='#FFFFFF')
+                self.draw.text((self.width-32*2-6*2-width,55*2-2*2), text = self.content['category'], font = self.cat_font, fill='#FFFFFF')
 
         def thumbs():
             border = Image.open('data/template/icons/border.png').convert("RGBA")
@@ -129,28 +129,28 @@ class DrawCard:
     def __draw_text(self):
 
         def set_word():
-            self.draw.text((32*2,55*2), text = self.content['word'], font = self.__word_font, fill='#134FE6')
+            self.draw.text((32*2,55*2), text = self.content['word'], font = self.word_font, fill='#134FE6')
 
         def set_definition():
-            line_height = self.__def_font.getsize('hg')[1]
+            line_height = self.def_font.getsize('hg')[1]
 
             space = 0
-            for line in self.__def_lines:
-                self.draw.text((32*2, 32*2+25*2+40*2+16*2+space), text = line, font = self.__def_font, fill="#2C353C")
+            for line in self.def_lines:
+                self.draw.text((32*2, 32*2+25*2+40*2+16*2+space), text = line, font = self.def_font, fill="#2C353C")
                 space += line_height
 
         def set_example():
-            line_height = self.__ex_font.getsize('hg')[1]
+            line_height = self.ex_font.getsize('hg')[1]
 
             space = 0
-            for line in self.__ex_lines:
-                self.draw.text((32*2, 32*2+25*2+40*2+16*2+len(self.__def_lines)*line_height+16*2+space), text = line, font = self.__ex_font, fill="#2C353C")
+            for line in self.ex_lines:
+                self.draw.text((32*2, 32*2+25*2+40*2+16*2+len(self.def_lines)*line_height+16*2+space), text = line, font = self.ex_font, fill="#2C353C")
                 space += line_height
 
         def set_author():
             date = datetime.strftime(datetime.strptime(self.content['written_on'][:10], "%Y-%m-%d"), "%B %d,%Y")
-            y = 32*2+25*2+40*2+16*2+len(self.__def_lines)*19.5*2+16*2 + len(self.__ex_lines)*19.5*2 + 15*2
-            self.draw.text((32*2, y), text = f"by {self.content['author']} {date}", font = self.__aut_font, fill="#333333")
+            y = 32*2+25*2+40*2+16*2+len(self.def_lines)*19.5*2+16*2 + len(self.ex_lines)*19.5*2 + 15*2
+            self.draw.text((32*2, y), text = f"by {self.content['author']} {date}", font = self.aut_font, fill="#333333")
 
         def text():
             set_word()
