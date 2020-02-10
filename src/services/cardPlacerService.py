@@ -1,7 +1,7 @@
 import threading
 import time
 
-from src import unbandictionary_api
+from src import urbandictionary_api
 from src.draw_card import save_card
 from src.services.baseService import BaseService
 from src.singleton.the import The
@@ -26,11 +26,11 @@ class CardPlacerService(BaseService):
         sleep_for = the.config_service.data["time_span"].value
         names_data_set = the.data_set_service.name_data_set.data
         while True:
-            word = unbandictionary_api.get_random_word()
+            word = urbandictionary_api.get_random_word()
             while word in names_data_set:
-                word = unbandictionary_api.get_random_word()
+                word = urbandictionary_api.get_random_word()
 
-            word_data = unbandictionary_api.get_word_data(word)
+            word_data = urbandictionary_api.get_word_data(word)
 
             path = save_card(
                 word=word,

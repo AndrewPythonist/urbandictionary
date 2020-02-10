@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-from src.unbandictionary_api import get_word_data
+from src.urbandictionary_api import get_word_data
 from src.other.text_wrap import text_wrap
 from datetime import datetime
 
