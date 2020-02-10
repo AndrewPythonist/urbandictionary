@@ -6,7 +6,7 @@ from datetime import datetime
 class СardModel:
     pass
 
-class DrawCard:
+class CardDrawer:
     def __init__(self, word, image):
         self.content = get_word_data(word)
         self.image = Image.open(image)
@@ -177,7 +177,7 @@ def save_card(word, image, filepath='data/cards/', filename=None):
     filename - имя изображения
     '''
 
-    image = DrawCard(word = word, image = image)
+    image = CardDrawer(word = word, image = image)
     image.draw_card()
     path = image.save(filepath=filepath, filename=filename)
 
