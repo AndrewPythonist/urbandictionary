@@ -3,6 +3,8 @@ from src.urbandictionary_api import get_word_data
 from src.other.text_wrap import text_wrap
 from datetime import datetime
 
+class СardModel:
+    pass
 
 class DrawCard:
     def __init__(self, word, image):
@@ -20,6 +22,7 @@ class DrawCard:
         self.def_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Regular.otf', size=16*2)
         self.ex_font = ImageFont.truetype('data/template/fonts/SourceSansPro-It.otf', size=16*2)
         self.aut_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=16*2)
+        self.thumb_font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=12*2)
 
     def __set_size(self):
         '''Функция вычисляет размер изображения, исходя из контента и шрифтов,
@@ -103,9 +106,8 @@ class DrawCard:
             border = border.resize((144*2,40*2))
             self.image.paste(border, (32*2,self.height-40*2-5*2), mask = border)
 
-            font = ImageFont.truetype('data/template/fonts/SourceSansPro-Semibold.otf', size=12*2) # убрать шрифт наверх
-            self.draw.text((32*2+16*2+16*2+8*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_up']), font= font)
-            self.draw.text((32*2+75*2+8*2+16*2+6.5*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_down']), font= font)
+            self.draw.text((32*2+16*2+16*2+8*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_up']), font=self.thumb_font)
+            self.draw.text((32*2+75*2+8*2+16*2+6.5*2, self.height-5*2-29*2),fill="#000000", text = str(self.content['thumbs_down']), font=self.thumb_font)
 
         def text_right():
 
