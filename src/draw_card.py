@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-from src.urbandictionary_api import get_word_data
+from src.urbandictionary_api import get_word_data, get_random_word
 from src.other.text_wrap import text_wrap
 from datetime import datetime
 
@@ -199,8 +199,6 @@ def save_card(word, image, filepath='data/cards/', filename=None):
 
 
 def test_draw_card():
-    from urbandictionary_api import get_random_word
-    from pprint import pprint
     from random import randint
 
     image = CardDrawer(word=get_random_word(), image=f'data/template/backgroundimages/bgimg ({randint(1, 9)}).jpg')
