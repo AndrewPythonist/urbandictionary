@@ -6,7 +6,7 @@ import requests
 from datetime import datetime
 
 
-class VkPosting():
+class VkPosting:
     '''VkPhoto class can upload and posting photo on vk group.'''
 
     def __init__(self, token):
@@ -29,7 +29,8 @@ class VkPosting():
                 'album_id': self.album_id
             }
 
-            return requests.get('https://api.vk.com/method/photos.getUploadServer', params=params).json()['response']['upload_url']
+            return requests.get('https://api.vk.com/method/photos.getUploadServer', params=params).json()['response'][
+                'upload_url']
 
         elif method == 'a':
 
@@ -38,7 +39,8 @@ class VkPosting():
                 'v': self.version
             }
 
-            return requests.get('https://api.vk.com/method/audio.getUploadServer', params=params).json()['response']['upload_url']
+            return requests.get('https://api.vk.com/method/audio.getUploadServer', params=params).json()['response'][
+                'upload_url']
 
     def upload_photo(self, imagefile, group_id, album_id):
         '''Upload photo to vk's servers and save self.photo_info about this image.
@@ -102,7 +104,8 @@ class VkPosting():
 
             try:
                 if response.json()['response']:
-                    print(f"{datetime.strftime(datetime.now(), '%X')} : Successful posting by id {response.json()['response']['post_id']}")
+                    print(
+                        f"{datetime.strftime(datetime.now(), '%X')} : Successful posting by id {response.json()['response']['post_id']}")
             except:
                 if response.json()['error']:
                     print(
